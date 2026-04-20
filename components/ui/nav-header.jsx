@@ -18,7 +18,7 @@ function NavHeader() {
       <Tab setPosition={setPosition}>Home</Tab>
       
       <Tab setPosition={setPosition}>About Me</Tab>
-      <Tab setPosition={setPosition}>Services</Tab>
+      <Tab setPosition={setPosition}>Projects</Tab>
       <Tab setPosition={setPosition}>Contact</Tab>
 
       <Cursor position={position} />

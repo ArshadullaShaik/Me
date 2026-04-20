@@ -14,3 +14,7 @@ html, body {
   height: 100% !important;
   object-fit: cover; /* Ensures the aspect ratio stays clean */
 }
+
+/* 3. Hide default browser cursor for SmoothCursor */
+* { cursor: none !important; }
+input, textarea, select { cursor: text !important; }

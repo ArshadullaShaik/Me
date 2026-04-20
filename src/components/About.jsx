@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import SpotlightCard from "./SpotlightCard";
 import Arshad from "../assets/Arshad.jpeg";
 import ResumePdf from "../assets/Resumeupd.pdf";
+import { NoiseBackground } from "@/components/ui/noise-background";
+import { Particles } from "@/components/ui/particles";
 
 const container = {
   hidden: { opacity: 0, y: 28 },
@@ -17,16 +19,32 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: "100%" },
+  show: {
+    opacity: 1,
+    y: "0%",
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  },
 };
 
 function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-zinc-950 via-black to-black"
+      className="relative z-20 min-h-screen w-full overflow-hidden bg-gradient-to-b from-zinc-950 via-black to-black"
     >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+      >
+        <div className="relative h-[500px] w-full overflow-hidden">
+          <Particles quantity={130} size={1.1} ease={70} color="#ffffff" className="size-full opacity-60" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black" />
+      </div>
       <motion.div
         className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl items-center px-6 py-20"
         variants={container}
@@ -49,31 +67,37 @@ function About() {
           </motion.div>
 
           <motion.div variants={item} className="space-y-6 text-white">
-            <motion.p
-              variants={item}
-              className="text-xs uppercase tracking-[0.35em] text-white/60"
-            >
-              ABOUT ME
-            </motion.p>
+            <div className="overflow-hidden">
+              <motion.p
+                variants={item}
+                className="text-xs uppercase tracking-[0.35em] text-white/60 inline-block"
+              >
+                ABOUT ME
+              </motion.p>
+            </div>
 
-            <motion.h2
-              variants={item}
-              className="text-4xl font-semibold tracking-tight drop-shadow-[0_0_22px_rgba(255,255,255,0.18)] sm:text-5xl"
-            >
-              Engineering decentralized logic into immersive interfaces.
-            </motion.h2>
+            <div className="overflow-hidden">
+              <motion.h2
+                variants={item}
+                className="text-4xl font-semibold tracking-tight drop-shadow-[0_0_22px_rgba(255,255,255,0.18)] sm:text-5xl"
+              >
+                Engineering decentralized logic into immersive interfaces.
+              </motion.h2>
+            </div>
 
-            <motion.div variants={item} className="space-y-1">
-              <p className="text-3xl font-semibold tracking-tight text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:text-2xl">
-                Me? I’m a Blockchain Developer and Frontend Engineer constructing decentralized apps, secure smart contracts, and techy frontend webpages. I specialize in bridging the gap between robust on-chain logic and immersive user experiences
-              </p>
-            </motion.div>
+            <div className="overflow-hidden">
+              <motion.div variants={item} className="space-y-1">
+                <p className="text-3xl font-semibold tracking-tight text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:text-2xl">
+                  Me? I’m a Blockchain Developer and Frontend Engineer constructing decentralized apps, secure smart contracts, and techy frontend webpages. I specialize in bridging the gap between robust on-chain logic and immersive user experiences
+                </p>
+              </motion.div>
+            </div>
 
             <motion.p
               variants={item}
               className="max-w-xl text-sm leading-7 text-white/70 sm:text-base"
             >
-              
+
             </motion.p>
 
             <motion.div variants={item} className="grid gap-3 sm:grid-cols-2">
@@ -81,7 +105,7 @@ function About() {
                 "BlockChain + Web3",
                 "Frontend Developer",
                 "Smart Contracts",
-                "UI Engineering + Motion",
+                "Linux Enthusiast",
               ].map((skill) => (
                 <SpotlightCard
                   key={skill}
@@ -94,14 +118,23 @@ function About() {
             </motion.div>
 
             <motion.div variants={item}>
-              <a
-                href={ResumePdf}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center rounded-full border border-white/20 bg-white px-6 py-2 text-sm font-semibold text-black transition-transform duration-200 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(255,255,255,0.2)]"
+              <NoiseBackground
+                containerClassName="w-fit p-[2px] rounded-full"
+                gradientColors={[
+                  "rgb(255, 100, 150)",
+                  "rgb(100, 150, 255)",
+                  "rgb(255, 200, 100)",
+                ]}
               >
-                Download Resume
-              </a>
+                <a
+                  href={ResumePdf}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-full w-full items-center justify-center cursor-pointer rounded-full bg-linear-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2 text-sm font-semibold text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-98 dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
+                >
+                  Download Resume
+                </a>
+              </NoiseBackground>
             </motion.div>
           </motion.div>
         </div>
