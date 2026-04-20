@@ -5,6 +5,7 @@ import { HomeDemo } from "@/components/ui/demo";
 import Shuffle from "@/components/blocks/Shuffle";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 import { ReactLenis } from 'lenis/react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
@@ -73,6 +74,7 @@ function App() {
 
           <About />
           <Projects />
+          <Contact />
         </div>
       </ClickSpark>
     </ReactLenis>

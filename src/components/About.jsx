@@ -4,6 +4,7 @@ import Arshad from "../assets/Arshad.jpeg";
 import ResumePdf from "../assets/Resumeupd.pdf";
 import { NoiseBackground } from "@/components/ui/noise-background";
 import { Particles } from "@/components/ui/particles";
+import { ConfettiButton } from "@/components/ui/confetti";
 
 const container = {
   hidden: { opacity: 0, y: 28 },
@@ -31,6 +32,12 @@ const item = {
 };
 
 function About() {
+  const handleResumeDownload = () => {
+    window.setTimeout(() => {
+      window.open(ResumePdf, "_blank", "noopener,noreferrer");
+    }, 140);
+  };
+
   return (
     <section
       id="about"
@@ -126,14 +133,18 @@ function About() {
                   "rgb(255, 200, 100)",
                 ]}
               >
-                <a
-                  href={ResumePdf}
-                  target="_blank"
-                  rel="noreferrer"
+                <ConfettiButton
+                  onClick={handleResumeDownload}
+                  options={{
+                    particleCount: 90,
+                    spread: 85,
+                    startVelocity: 45,
+                    scalar: 1.05,
+                  }}
                   className="inline-flex h-full w-full items-center justify-center cursor-pointer rounded-full bg-linear-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2 text-sm font-semibold text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-98 dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
                 >
                   Download Resume
-                </a>
+                </ConfettiButton>
               </NoiseBackground>
             </motion.div>
           </motion.div>
