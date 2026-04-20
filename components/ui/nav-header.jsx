@@ -15,23 +15,36 @@ function NavHeader() {
       className="relative mx-auto flex w-fit rounded-full border-2 border-black bg-white p-1"
       onMouseLeave={() => setPosition((pv) => ({ ...pv, opacity: 0 }))}
     >
-      <Tab setPosition={setPosition}>Home</Tab>
-      
-      <Tab setPosition={setPosition}>About Me</Tab>
-      <Tab setPosition={setPosition}>Projects</Tab>
-      <Tab setPosition={setPosition}>Contact</Tab>
+      <Tab setPosition={setPosition} targetId="home">Home</Tab>
+
+      <Tab setPosition={setPosition} targetId="about">About Me</Tab>
+      <Tab setPosition={setPosition} targetId="projects">Projects</Tab>
+      <Tab setPosition={setPosition} targetId="contact">Contact</Tab>
 
       <Cursor position={position} />
     </ul>
   );
 }
 
-const Tab = ({ children, setPosition }) => {
+const Tab = ({ children, setPosition, targetId }) => {
   const ref = useRef(null);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (targetId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (targetId) {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <li
       ref={ref}
+      onClick={handleClick}
       onMouseEnter={() => {
         if (!ref.current) return;
 

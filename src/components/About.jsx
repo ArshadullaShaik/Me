@@ -5,6 +5,7 @@ import ResumePdf from "../assets/Resumeupd.pdf";
 import { NoiseBackground } from "@/components/ui/noise-background";
 import { Particles } from "@/components/ui/particles";
 import { ConfettiButton } from "@/components/ui/confetti";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 const container = {
   hidden: { opacity: 0, y: 28 },
@@ -141,8 +142,9 @@ function About() {
                     startVelocity: 45,
                     scalar: 1.05,
                   }}
-                  className="inline-flex h-full w-full items-center justify-center cursor-pointer rounded-full bg-linear-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2 text-sm font-semibold text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-98 dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
+                  className="relative overflow-hidden inline-flex h-full w-full items-center justify-center cursor-pointer rounded-full bg-linear-to-r from-neutral-100 via-neutral-100 to-white px-6 py-2 text-sm font-semibold text-black shadow-[0px_2px_0px_0px_var(--color-neutral-50)_inset,0px_0.5px_1px_0px_var(--color-neutral-400)] transition-all duration-100 active:scale-98 dark:from-black dark:via-black dark:to-neutral-900 dark:text-white dark:shadow-[0px_1px_0px_0px_var(--color-neutral-950)_inset,0px_1px_0px_0px_var(--color-neutral-800)]"
                 >
+                  <BorderBeam size={60} duration={4} delay={9} borderWidth={2} />
                   Download Resume
                 </ConfettiButton>
               </NoiseBackground>

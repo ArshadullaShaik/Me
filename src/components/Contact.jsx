@@ -47,6 +47,14 @@ function Contact() {
             <BookCallButton href="https://cal.com/your-username" />
           </div>
         </div>
+
+        <div className="mt-32 flex w-full flex-col items-center justify-center pb-8 text-center">
+          <div className="mb-8 h-px w-full max-w-sm bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+          <p className="mb-4 text-base text-white/90 sm:text-lg">Always building. Always shipping</p>
+          <p className="text-[14px] uppercase tracking-[0.25em] text-white/75 sm:text-xs">
+            MADE WITH LOVE AND PASSION BY : ARSHADULLA SHAIK
+          </p>
+        </div>
       </div>
     </section>
   );

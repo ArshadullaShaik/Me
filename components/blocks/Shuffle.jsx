@@ -232,18 +232,6 @@ const Shuffle = ({
         });
       };
 
-      const cleanupToStill = () => {
-        wrappersRef.current.forEach(w => {
-          const strip = w.firstElementChild;
-          if (!strip) return;
-          const real = strip.querySelector('[data-orig="1"]');
-          if (!real) return;
-          strip.replaceChildren(real);
-          strip.style.transform = 'none';
-          strip.style.willChange = 'auto';
-        });
-      };
-
       const play = () => {
         const strips = inners();
         if (!strips.length) return;
@@ -267,8 +255,8 @@ const Shuffle = ({
           onComplete: () => {
             playingRef.current = false;
             if (!loop) {
-              cleanupToStill();
-              if (colorTo) gsap.set(strips, { color: colorTo });
+              teardown();
+              if (colorTo) gsap.set(el, { color: colorTo });
               onShuffleComplete?.();
               armHover();
             }
