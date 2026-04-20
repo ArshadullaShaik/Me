@@ -65,7 +65,7 @@ export default function FloatingDockDemo() {
     },
   ];
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="flex w-fit items-center justify-end self-end">
       <FloatingDock
         mobileClassName="translate-y-20"
         items={links}

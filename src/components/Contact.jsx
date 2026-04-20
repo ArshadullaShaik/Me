@@ -1,6 +1,7 @@
 import FloatingDockDemo from "@/components/floating-dock-demo";
 import DotBackgroundDemo from "@/components/dot-background-demo";
 import BookCallButton from "@/components/ui/book-call-button";
+import SpaceWavesMiniGame from "./SpaceWavesMiniGame";
 import { motion } from "framer-motion";
 
 function Contact() {
@@ -36,9 +37,15 @@ function Contact() {
           frontend engineering roles, and freelance product builds.
         </p>
 
-        <div className="flex flex-col items-center gap-5 md:flex-row md:justify-center">
-          <BookCallButton href="https://cal.com/your-username" />
-          <FloatingDockDemo />
+        <div className="grid items-start gap-8 lg:grid-cols-[minmax(340px,560px)_1fr]">
+          <div className="justify-self-start">
+            <SpaceWavesMiniGame />
+          </div>
+
+          <div className="mt-4 flex flex-col items-end gap-5 lg:mt-8">
+            <FloatingDockDemo />
+            <BookCallButton href="https://cal.com/your-username" />
+          </div>
         </div>
       </div>
     </section>
