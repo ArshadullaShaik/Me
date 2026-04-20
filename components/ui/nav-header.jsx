@@ -16,8 +16,8 @@ function NavHeader() {
       onMouseLeave={() => setPosition((pv) => ({ ...pv, opacity: 0 }))}
     >
       <Tab setPosition={setPosition}>Home</Tab>
-      <Tab setPosition={setPosition}>Pricing</Tab>
-      <Tab setPosition={setPosition}>About</Tab>
+      
+      <Tab setPosition={setPosition}>About Me</Tab>
       <Tab setPosition={setPosition}>Services</Tab>
       <Tab setPosition={setPosition}>Contact</Tab>
 

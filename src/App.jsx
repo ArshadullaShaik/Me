@@ -1,34 +1,66 @@
-import './App.css'
-import Galaxy from "./components/Galaxy";
-//import Navbar from "./components/Navbar";
+import "./App.css";
+import PixelSnow from "@/components/blocks/PixelSnow";
+import ClickSpark from "@/components/blocks/ClickSpark";
 import { HomeDemo } from "@/components/ui/demo";
+import Shuffle from "@/components/blocks/Shuffle";
+import About from "./components/About";
 
 function App() {
   return (
-    <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-      <Galaxy
-        className="galaxy-container"
-        style={{ width: "100%", height: "100%" }}
-        mouseRepulsion
-        mouseInteraction
-        density={1}
-        glowIntensity={0.3}
-        saturation={0}
-        hueShift={140}
-        twinkleIntensity={0.3}
-        rotationSpeed={0.1}
-        repulsionStrength={2}
-        autoCenterRepulsion={0}
-        starSpeed={0.5}
-        speed={1}
-      />
-
-      <div className="pointer-events-none absolute inset-0">
-        <div className="pointer-events-auto">
+    <ClickSpark sparkColor="#fff" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+      <div className="relative w-full bg-black">
+        <section className="relative h-screen w-full overflow-hidden">
+          <PixelSnow
+            color="#ffffff"
+            flakeSize={0.01}
+            minFlakeSize={1.25}
+            pixelResolution={200}
+            speed={1.25}
+            density={0.3}
+            direction={125}
+            brightness={1}
+          />
+          <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+            <div className="flex flex-col items-center text-center">
+              <Shuffle
+                text="Arshadulla"
+                shuffleDirection="right"
+                duration={0.35}
+                animationMode="evenodd"
+                shuffleTimes={1}
+                ease="power3.out"
+                stagger={0.03}
+                threshold={0.1}
+                triggerOnce={true}
+                triggerOnHover={true}
+                respectReducedMotion={true}
+                tag="h1"
+                className="max-w-4xl text-balance text-5xl font-semibold tracking-tight text-white drop-shadow-[0_0_28px_rgba(255,255,255,0.22)] sm:text-7xl lg:text-8xl"
+              />
+              <div className="h-2 sm:h-3" />
+              <Shuffle
+                text="Shaik"
+                shuffleDirection="right"
+                duration={0.35}
+                animationMode="evenodd"
+                shuffleTimes={1}
+                ease="power3.out"
+                stagger={0.03}
+                threshold={0.1}
+                triggerOnce={true}
+                triggerOnHover={true}
+                respectReducedMotion={true}
+                tag="h2"
+                className="max-w-4xl text-balance text-4xl font-semibold tracking-tight text-white drop-shadow-[0_0_28px_rgba(255,255,255,0.22)] sm:text-6xl lg:text-7xl"
+              />
+            </div>
+          </div>
           <HomeDemo />
-        </div>
+        </section>
+
+        <About />
       </div>
-    </div>
+    </ClickSpark>
   );
 }
 
