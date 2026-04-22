@@ -37,12 +37,12 @@ function Contact() {
           frontend engineering roles, and freelance product builds.
         </p>
 
-        <div className="grid items-start gap-8 lg:grid-cols-[minmax(340px,560px)_1fr]">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,560px)_1fr]">
           <div className="justify-self-start">
             <SpaceWavesMiniGame />
           </div>
 
-          <div className="mt-4 flex flex-col items-end gap-5 lg:mt-8">
+          <div className="mt-12 flex flex-col items-center gap-5 sm:mt-14 lg:mt-20 lg:items-end">
             <FloatingDockDemo />
             <BookCallButton href="https://cal.com/valoucard" />
           </div>

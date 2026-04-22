@@ -51,7 +51,7 @@ const FloatingDockMobile = ({
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+            className="absolute bottom-full left-1/2 z-50 mb-3 flex max-w-[calc(100vw-2rem)] -translate-x-1/2 items-center gap-1.5 overflow-x-auto rounded-full bg-neutral-950/90 p-2 shadow-xl shadow-black/35 backdrop-blur"
           >
             {items.map((item, idx) => (
               <motion.div
@@ -72,9 +72,9 @@ const FloatingDockMobile = ({
               >
                 <a
                   href={item.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-50 shadow-lg shadow-black/25 dark:bg-neutral-900 sm:h-11 sm:w-11"
                 >
-                  <div className="h-4 w-4">{item.icon}</div>
+                  <div className="h-4.5 w-4.5 sm:h-5 sm:w-5">{item.icon}</div>
                 </a>
               </motion.div>
             ))}
@@ -83,7 +83,9 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
+        className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full bg-gray-50 shadow-lg shadow-black/25 dark:bg-neutral-800"
+        aria-expanded={open}
+        aria-label="Open social links"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>

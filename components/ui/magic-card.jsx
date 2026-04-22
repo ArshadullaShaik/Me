@@ -44,6 +44,7 @@ export function MagicCard(props) {
   const modeRef = useRef(mode)
   const glowOpacityRef = useRef(glowOpacity)
   const gradientSizeRef = useRef(gradientSize)
+  const [isPointerActive, setIsPointerActive] = useState(false)
 
   useEffect(() => {
     modeRef.current = mode
@@ -73,9 +74,26 @@ export function MagicCard(props) {
 
   const handlePointerMove = useCallback((e) => {
     const rect = e.currentTarget.getBoundingClientRect()
-    mouseX.set(e.clientX - rect.left)
-    mouseY.set(e.clientY - rect.top)
+    const x = Number.isFinite(e.clientX) ? e.clientX - rect.left : rect.width / 2
+    const y = Number.isFinite(e.clientY) ? e.clientY - rect.top : rect.height / 2
+    mouseX.set(x)
+    mouseY.set(y)
   }, [mouseX, mouseY])
+
+  const handlePointerActivate = useCallback((e) => {
+    setIsPointerActive(true)
+    handlePointerMove(e)
+    reset("enter")
+  }, [handlePointerMove, reset])
+
+  const handlePointerDeactivate = useCallback((e) => {
+    if (e?.pointerType === "mouse" && e.type === "pointerup") {
+      return
+    }
+
+    setIsPointerActive(false)
+    reset("leave")
+  }, [reset])
 
   useEffect(() => {
     reset("init")
@@ -108,8 +126,13 @@ export function MagicCard(props) {
         className
       )}
       onPointerMove={handlePointerMove}
-      onPointerLeave={() => reset("leave")}
-      onPointerEnter={() => reset("enter")}
+      onPointerLeave={handlePointerDeactivate}
+      onPointerEnter={handlePointerActivate}
+      onPointerDown={handlePointerActivate}
+      onPointerUp={handlePointerDeactivate}
+      onPointerCancel={handlePointerDeactivate}
+      onFocus={handlePointerActivate}
+      onBlur={handlePointerDeactivate}
       style={{
         background: useMotionTemplate`
           linear-gradient(var(--color-background) 0 0) padding-box,
@@ -124,7 +147,10 @@ export function MagicCard(props) {
       {mode === "gradient" && (
         <motion.div
           suppressHydrationWarning
-          className="pointer-events-none absolute inset-px z-30 rounded-[15px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={cn(
+            "pointer-events-none absolute inset-px z-30 rounded-[15px] opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+            isPointerActive && "opacity-100"
+          )}
           style={{
             background: useMotionTemplate`
               radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
@@ -132,7 +158,7 @@ export function MagicCard(props) {
                 transparent 100%
               )
             `,
-            opacity: gradientOpacity,
+            opacity: isPointerActive ? gradientOpacity : undefined,
           }} />
       )}
       {mode === "orb" && (

@@ -31,14 +31,14 @@ const projects = [
 
 function Projects() {
   return (
-    <section id="projects" className="relative min-h-screen w-full bg-black px-6 py-24">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="projects" className="projects-section">
+      <div className="projects-container">
         <motion.p
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mb-4 text-xs uppercase tracking-[0.35em] text-white/60"
+          className="projects-eyebrow"
         >
           PROJECTS
         </motion.p>
@@ -48,12 +48,12 @@ function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-12 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-5xl"
+          className="projects-heading"
         >
           Selected builds with interaction-first design and production-grade on-chain logic.
         </motion.h2>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-2">
+        <div className="projects-grid">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -61,21 +61,22 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.6, delay: index * 0.07, ease: "easeOut" }}
+              className="project-card-motion"
             >
-              <MagicCard mode="orb" glowFrom="#ee4f27" glowTo="#6b21ef" className="h-full min-h-[340px]">
-                <div className="flex h-full flex-col p-6">
-                  <div className="mb-4 flex items-start justify-between gap-4">
-                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                    <ArrowUpRight className="mt-1 shrink-0 text-white/70" size={18} />
+              <MagicCard mode="orb" glowFrom="#ee4f27" glowTo="#6b21ef" className="project-card">
+                <div className="project-card-inner">
+                  <div className="project-card-header">
+                    <h3 className="project-card-title">{project.title}</h3>
+                    <ArrowUpRight className="project-card-icon" size={18} />
                   </div>
 
-                  <p className="mb-6 text-sm leading-7 text-white/75">{project.description}</p>
+                  <p className="project-card-description">{project.description}</p>
 
-                  <div className="mt-auto flex flex-wrap gap-2">
+                  <div className="project-tags">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80"
+                        className="project-tag"
                       >
                         {tag}
                       </span>
@@ -84,12 +85,12 @@ function Projects() {
 
                   <a
                     href={project.href}
-                    className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-white/90 transition-colors hover:text-white"
+                    className="project-link"
                   >
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 24 24"
-                      className="size-3.5"
+                      className="project-link-mark"
                       fill="currentColor"
                     >
                       <path d="M12 0.3C5.4 0.3 0 5.7 0 12.3c0 5.3 3.4 9.8 8.2 11.3 0.6 0.1 0.8-0.3 0.8-0.6v-2.2c-3.3 0.7-4-1.4-4-1.4-0.5-1.4-1.3-1.8-1.3-1.8-1.1-0.8 0.1-0.8 0.1-0.8 1.2 0.1 1.8 1.2 1.8 1.2 1.1 1.9 2.8 1.4 3.5 1.1 0.1-0.8 0.4-1.4 0.8-1.7-2.7-0.3-5.6-1.3-5.6-6 0-1.3 0.5-2.4 1.2-3.2-0.1-0.3-0.5-1.6 0.1-3.2 0 0 1-0.3 3.3 1.2 1-0.3 2-0.4 3-0.4s2.1 0.1 3 0.4c2.3-1.5 3.3-1.2 3.3-1.2 0.7 1.7 0.3 2.9 0.1 3.2 0.8 0.9 1.2 1.9 1.2 3.2 0 4.7-2.9 5.7-5.7 6 0.5 0.4 0.9 1.2 0.9 2.3V23c0 0.3 0.2 0.7 0.8 0.6 4.8-1.6 8.2-6.1 8.2-11.3C24 5.7 18.6 0.3 12 0.3z" />

@@ -48,7 +48,7 @@ function About() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
       >
-        <div className="relative h-[500px] w-full overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden">
           <Particles quantity={130} size={1.1} ease={70} color="#ffffff" className="size-full opacity-60" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black" />
@@ -68,7 +68,7 @@ function About() {
               <img
                 src={Arshad}
                 alt="Arshadulla Shaik"
-                className="relative h-64 w-64 rounded-full border border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.18)] transition-transform duration-300 group-hover:scale-[1.02] sm:h-116 sm:w-86"
+                className="relative h-64 w-64 rounded-full border border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.18)] transition-transform duration-300 group-hover:scale-[1.02] sm:h-80 sm:w-72"
                 loading="lazy"
               />
             </div>
@@ -95,7 +95,7 @@ function About() {
 
             <div className="overflow-hidden">
               <motion.div variants={item} className="space-y-1">
-                <p className="text-3xl font-semibold tracking-tight text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:text-2xl">
+                <p className="text-xl font-semibold tracking-tight text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.16)] sm:text-2xl">
                   Me? I’m a Blockchain Developer and Frontend Engineer constructing decentralized apps, secure smart contracts, and techy frontend webpages. I specialize in bridging the gap between robust on-chain logic and immersive user experiences
                 </p>
               </motion.div>
