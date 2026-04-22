@@ -65,9 +65,10 @@ export default function FloatingDockDemo() {
     },
   ];
   return (
-    <div className="relative z-20 flex w-fit items-center justify-center md:justify-end md:self-end">
+    <div className="relative z-20 flex w-full items-center justify-center xl:w-fit xl:justify-end xl:self-end">
       <FloatingDock
         mobileClassName="z-20"
+        desktopClassName="md:scale-90 lg:scale-95 xl:scale-100"
         items={links}
       />
     </div>
